@@ -40,13 +40,13 @@ public class MainMenu extends JFrame {
 		 * Action listeners on menu buttons
 		 */
 		
-		MenuPrefCass mpc = new MenuPrefClass();
+		MenuPrefClass mpc = new MenuPrefClass();
 		preferences.addActionListener(mpc);
 		
-		LogoutButtonClass lbc = new MenuLogoutClass();
+		LogoutButtonClass lbc = new LogoutButtonClass();
 		menuLogout.addActionListener(lbc);
 		
-		MenuQuitClass mqc = new MenuQUitClass();
+		MenuQuitClass mqc = new MenuQuitClass();
 		quit.addActionListener(mqc);
 		
 		/*
@@ -78,7 +78,6 @@ public class MainMenu extends JFrame {
 		ReportsButtonClass rbc = new ReportsButtonClass();
 		reports.addActionListener(rbc);
 		
-		LogoutButtonClass lbc = new LogoutButtonClass();
 		logout.addActionListener(lbc);
 	}
 	
@@ -122,6 +121,7 @@ public class MainMenu extends JFrame {
 	
 	public class JobsButtonClass implements ActionListener {
 		public void actionPerformed(ActionEvent jbc) {
+			dispose();
 			Jobs gui = new Jobs();
 			gui.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 			gui.pack();
@@ -131,8 +131,9 @@ public class MainMenu extends JFrame {
 		}
 	}
 	
-	public class StaffBUttonClass implements ActionListener {
+	public class StaffButtonClass implements ActionListener {
 		public void actionPerformed(ActionEvent sbc) {
+			dispose();
 			Staff gui = new Staff();
 			gui.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 			gui.pack();
@@ -144,11 +145,12 @@ public class MainMenu extends JFrame {
 	
 	public class ReportsButtonClass implements ActionListener {
 		public void actionPerformed(ActionEvent rbc) {
+			dispose();
 			Reports gui = new Reports();
-			gui.setDefaultCloseOperations(JFrame.HIDE_ON_CLOSE);
+			gui.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 			gui.pack();
 			gui.setLocationRelativeTo(null);
-			gui.setTiel("Capytec Reports");
+			gui.setTitle("Capytec Reports");
 			gui.setVisible(true);
 		}
 	}

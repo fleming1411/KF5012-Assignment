@@ -108,7 +108,7 @@ public class Login extends JFrame {
 	
 	public class LoginButtonClass implements ActionListener {
 		public void actionPerformed(ActionEvent lbc) {
-			String sql = "SELECT * FROM user WHERE username=? AND password=?";
+			String sql = "SELECT * FROM staff WHERE username=? AND password=?";
 			try {
 				conn = DriverManager.getConnection(url);
 				pst = conn.prepareStatement(sql);
@@ -126,6 +126,9 @@ public class Login extends JFrame {
 				} else {
 					JOptionPane.showMessageDialog(null, "Username and Password Incorrect");
 				}
+				pst.close();
+				rs.close();
+				conn.close();
 			} catch (SQLException sqlex) {
 				System.err.println("Connection Unsuccessful\n" + sqlex.toString());
 			} catch (Exception ex) {

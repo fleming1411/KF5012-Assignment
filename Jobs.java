@@ -99,7 +99,7 @@ public class Jobs extends JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 25, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE))
         );
 
@@ -120,6 +120,9 @@ public class Jobs extends JFrame {
 						rs.getBoolean("Caretaker4"), rs.getBoolean("Caretaker5"), rs.getBoolean("Caretaker6"));
 				jobsList.add(jobs1);
 			}
+			st.close();
+			rs.close();
+			conn.close();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,  e);
 		}
@@ -147,12 +150,19 @@ public class Jobs extends JFrame {
 	
 	public class MenuAddClass implements ActionListener {
         public void actionPerformed(ActionEvent mac) {
-            
+        	dispose();
+        	AddJobs gui = new AddJobs();
+            gui.setSize(300, 100);
+            gui.setVisible(true);
+            gui.setTitle("Add Jobs");
+            gui.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            gui.setLocationRelativeTo(null);
         }
     }
 	
 	public class MenuLogoutClass implements ActionListener {
         public void actionPerformed(ActionEvent mlc) {
+        	dispose();
         	Toolkit.getDefaultToolkit().beep();
             Logout gui = new Logout(Jobs.this);
             gui.setSize(300, 100);
