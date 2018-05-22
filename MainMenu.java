@@ -121,7 +121,6 @@ public class MainMenu extends JFrame {
 	
 	public class JobsButtonClass implements ActionListener {
 		public void actionPerformed(ActionEvent jbc) {
-			dispose();
 			Jobs gui = new Jobs();
 			gui.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 			gui.pack();
@@ -133,7 +132,6 @@ public class MainMenu extends JFrame {
 	
 	public class StaffButtonClass implements ActionListener {
 		public void actionPerformed(ActionEvent sbc) {
-			dispose();
 			Staff gui = new Staff();
 			gui.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 			gui.pack();
@@ -145,7 +143,6 @@ public class MainMenu extends JFrame {
 	
 	public class ReportsButtonClass implements ActionListener {
 		public void actionPerformed(ActionEvent rbc) {
-			dispose();
 			Reports gui = new Reports();
 			gui.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 			gui.pack();

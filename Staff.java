@@ -80,8 +80,8 @@ public class Staff extends JFrame {
 					
 		},
 				new String [] {
-						"ID", "Surname", "Forename", "DoB",
-						"Address", "Strength", "Weakness"}
+						"ID", "Position", "Surname", "Forename", "DoB",
+						"Address", "Strength", "Weakness", "Notes"}
 		));
 		
 		scrollPane.setViewportView(staffTable);
@@ -114,9 +114,9 @@ public class Staff extends JFrame {
 			ResultSet rs = st.executeQuery(query1);
 			StaffArray staff1;
 			while(rs.next()) {
-				staff1 = new StaffArray(rs.getInt("ID"), rs.getString("Surname"), rs.getString("Surname"), 
+				staff1 = new StaffArray(rs.getInt("ID"), rs.getString("Position"), rs.getString("Surname"), rs.getString("Forname"), 
 						rs.getString("DoB"), rs.getString("Address"), rs.getString("Strength"),
-						rs.getString("Weakness"));
+						rs.getString("Weakness"), rs.getString("Notes"));
 				staffList.add(staff1);
 			}
 			st.close();
@@ -132,22 +132,30 @@ public class Staff extends JFrame {
 	public void show_staff() {
 		ArrayList<StaffArray> list = staffList();
 		DefaultTableModel model = (DefaultTableModel)staffTable.getModel();
-		Object[] row = new Object[8];
+		Object[] row = new Object[10];
 		for(int i=0; i<list.size(); i++) {
 			row[0]=list.get(i).getID();
-			row[1]=list.get(i).getSurname();
-			row[2]=list.get(i).getForename();
-			row[3]=list.get(i).getDob();
-			row[4]=list.get(i).getAddress();
-			row[5]=list.get(i).getStrength();
-			row[6]=list.get(i).getWeakness();
+			row[1]=list.get(i).getPosition();
+			row[2]=list.get(i).getSurname();
+			row[3]=list.get(i).getForename();
+			row[4]=list.get(i).getDob();
+			row[5]=list.get(i).getAddress();
+			row[6]=list.get(i).getStrength();
+			row[7]=list.get(i).getWeakness();
+			row[8]=list.get(i).getNotes();
 			model.addRow(row);;
 		}
 	}
 	
 	public class MenuAddClass implements ActionListener {
         public void actionPerformed(ActionEvent mac) {
-            
+        	dispose();
+        	AddStaff gui = new AddStaff();
+            gui.setSize(750, 750);
+            gui.setVisible(true);
+            gui.setTitle("Add Staff");
+            gui.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            gui.setLocationRelativeTo(null);
         }
     }
 	
